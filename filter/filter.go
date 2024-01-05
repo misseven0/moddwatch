@@ -22,11 +22,7 @@ func MatchAny(path string, patterns []string) (bool, error) {
 
 // File determines if a path matches a set of include and exclude patterns. At
 // least one include pattern and no exclude patterns must match.
-func File(
-	path string,
-	includePatterns []string,
-	excludePatterns []string,
-) (string, error) {
+func File(path string, includePatterns []string, excludePatterns []string) (string, error) {
 	if excluded, err := MatchAny(path, excludePatterns); err != nil {
 		return "", err
 	} else if excluded {
@@ -41,11 +37,7 @@ func File(
 }
 
 // Files filters an array of files using filter.File.
-func Files(
-	files []string,
-	includePatterns []string,
-	excludePatterns []string,
-) ([]string, error) {
+func Files(files []string, includePatterns []string, excludePatterns []string) ([]string, error) {
 	ret := []string{}
 	for _, file := range files {
 		path, err := File(file, includePatterns, excludePatterns)

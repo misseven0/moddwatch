@@ -407,13 +407,7 @@ func baseDirs(root string, includePatterns []string) ([]string, []string) {
 //	[abc]		any single character within the set
 //	[a-z]		any single character in the range
 //	[^class] 	any single character which does not match the class
-func Watch(
-	root string,
-	includes []string,
-	excludes []string,
-	lullTime time.Duration,
-	ch chan *Mod,
-) (*Watcher, error) {
+func Watch(root string, includes []string, excludes []string, lullTime time.Duration, ch chan *Mod) (*Watcher, error) {
 	evtch := make(chan notify.EventInfo, 4096)
 	newincludes, paths := baseDirs(root, includes)
 	for _, p := range paths {
