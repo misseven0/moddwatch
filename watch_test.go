@@ -676,3 +676,8 @@ func TestWatch(t *testing.T) {
 		},
 	)
 }
+func TestV(t *testing.T) {
+	a, b := baseDirs(`/aaa/bbb/ccc/ddd/...`, []string{"**"})
+	t.Log(a)
+	t.Log(b)
+}
